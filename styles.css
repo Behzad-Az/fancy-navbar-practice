@@ -10,11 +10,12 @@ body {
 
 .navbar-container {
   background-color: white;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   /* display: inline-block; does the same thing as max-width: max-content */
   max-width: max-content;
   margin: 0 auto;
   margin-top: 10rem;
+  padding: 0 1.5rem;
 }
 
 .list {
@@ -39,6 +40,6 @@ body {
 
 .list .icon {
   fill: currentColor;
-  width: 2em;
-  height: 2em;
+  width: 1.5em;
+  height: 1.5em;
 }
