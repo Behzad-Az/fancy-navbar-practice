@@ -48,7 +48,9 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 500ms ease-in-out;
-  display: none;
+  position: absolute;
+  bottom: calc(var(--nav-item-padding) * 0.5);
+  transform: translateY(50%);
 }
 
 .list .icon {
@@ -65,32 +67,73 @@ body {
 .list .active .text {
   pointer-events: all;
   opacity: 1;
+  transform: translateY(0);
 }
 
 .list .active .icon {
   transform: translateY(calc(-50% - var(--nav-item-padding)));
 }
 
-.list .active .icon::after {
+.list .active .icon::after,
+.list .active .icon::before {
   content: "";
   position: absolute;
   z-index: -1;
+  border-radius: 100%;
+}
+
+.list .active .icon::after {
   background-color: hsl(100, 100%, 50%);
   width: calc(var(--icon-size) * 2);
   height: calc(var(--icon-size) * 2);
   top: calc(var(--icon-size) * -0.5);
   left: calc(var(--icon-size) * -0.5);
-  border-radius: 100%;
 }
 
 .list .active .icon::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
   background-color: var(--background-color);
   width: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
   height: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
   top: calc(var(--icon-size) * -0.5 - var(--indicator-spacing));
   left: calc(var(--icon-size) * -0.5 - var(--indicator-spacing));
-  border-radius: 100%;
+}
+
+.list .active {
+  position: relative;
+}
+
+.list .active::before {
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  background-color: white;
+  z-index: 1;
+  top: calc(-1 * var(--indicator-spacing));
+  left: calc(0.186 * var(--indicator-spacing));
+  transform: translateX(-100%);
+  border-top-right-radius: 100%;
+  border-width: calc(var(--indicator-spacing));
+  border-color: var(--background-color);
+  border-style: solid;
+  border-bottom: none;
+  border-left: none;
+}
+
+.list .active::after {
+  content: "";
+  position: absolute;
+  width: var(--border-radius);
+  height: var(--border-radius);
+  background-color: white;
+  z-index: 1;
+  top: calc(-1 * var(--indicator-spacing));
+  right: calc(0.186 * var(--indicator-spacing));
+  transform: translateX(100%);
+  border-top-left-radius: 100%;
+  border-width: calc(var(--indicator-spacing));
+  border-color: var(--background-color);
+  border-style: solid;
+  border-bottom: none;
+  border-right: none;
 }
